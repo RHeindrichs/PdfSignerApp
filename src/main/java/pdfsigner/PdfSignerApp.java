@@ -78,7 +78,7 @@ import java.util.stream.Collectors;
  * PdfSignerApp (komplett):
  *   - Verwendung eines einzigen PKCS#11-Keystores (USB-Token / AATL) fuer alle Firmen
  *   - Dynamische Signatur-Parameter (Name, Reason, Location) je nach Ziel-Firma
- *   - slotListIndex kommt aus config.properties
+     *   - slotListIndex kommt aus config.properties (oder wird automatisch gescannt)
  *   - TSA-URL wird aus der AIA-Erweiterung im Zertifikat ausgelesen
  */
 public class PdfSignerApp {
@@ -111,8 +111,8 @@ public class PdfSignerApp {
         }
         
         try {
-            // PKCS#11 Provider initialisieren (mit slotIndex)
-            initPKCS11(cfg.pkcs11LibraryPath, cfg.pkcs11Slot, cfg.pkcs11Pin);
+            // PKCS#11 Provider initialisieren (mit slotIndex oder auto-scan)
+            initPKCS11(cfg.pkcs11LibraryPath, cfg.pkcs11Slot, cfg.pkcs11SlotScanMax, cfg.pkcs11Pin);
         } catch (Exception e) {
             System.err.println("Fehler in Token-Initialisierung: " + e.getMessage());
             logger.error("Fehler bei der PKCS#11-Initialisierung", e);
@@ -278,7 +278,7 @@ public class PdfSignerApp {
 
     /**
      * Laedt die Konfiguration aus config.properties.
-     * Neue Felder: pkcs11.library, pkcs11.slot, pkcs11.pin
+     * Neue Felder: pkcs11.library, pkcs11.slot, pkcs11.slot.scan.max, pkcs11.pin
      */
     private static Config loadConfig() throws IOException {
         File configFile = new File("config.properties");
@@ -296,7 +296,33 @@ public class PdfSignerApp {
      * Initialisiert den PKCS#11-Provider (SunPKCS11) anhand der Bibliotheks-Pfades, Slot-Index und PIN.
      * Der Slot-Index wird nun aus der Config uebergeben.
      */
-    private static void initPKCS11(String pkcs11LibraryPath, int slotIndex, char[] pin) throws Exception {
+    private static void initPKCS11(String pkcs11LibraryPath, Integer slotIndex, int slotScanMax, char[] pin) throws Exception {
+        if (slotIndex != null) {
+            initPKCS11ForSlot(pkcs11LibraryPath, slotIndex, pin);
+            return;
+        }
+
+        List<Exception> errors = new ArrayList<>();
+        for (int idx = 0; idx <= slotScanMax; idx++) {
+            try {
+                initPKCS11ForSlot(pkcs11LibraryPath, idx, pin);
+                if (pkcs11KeyStore.size() > 0) {
+                    logger.info("PKCS#11 Slot automatisch gefunden: slotListIndex={}", idx);
+                    return;
+                }
+                logger.warn("PKCS#11 Slot {} hat keine Aliase, naechster Slot wird getestet.", idx);
+                cleanupPkcs11Provider();
+            } catch (Exception e) {
+                errors.add(e);
+                logger.debug("PKCS#11 Slot {} konnte nicht geladen werden: {}", idx, e.getMessage());
+                cleanupPkcs11Provider();
+            }
+        }
+
+        throw new Exception("Kein passender PKCS#11 Slot gefunden (0-" + slotScanMax + ").");
+    }
+
+    private static void initPKCS11ForSlot(String pkcs11LibraryPath, int slotIndex, char[] pin) throws Exception {
         // -------------------------------
         // 1) Baue den Inhalt der PKCS#11-Konfigurationsdatei (mit dynamischem slotListIndex)
         // -------------------------------
@@ -359,6 +385,14 @@ public class PdfSignerApp {
         while (aliases.hasMoreElements()) {
             System.out.println("  -> " + aliases.nextElement());
         }
+    }
+
+    private static void cleanupPkcs11Provider() {
+        if (pkcs11Provider != null) {
+            Security.removeProvider(pkcs11Provider.getName());
+            pkcs11Provider = null;
+        }
+        pkcs11KeyStore = null;
     }
 
     /**
@@ -627,7 +661,7 @@ public class PdfSignerApp {
     /**
      * Konfigurationsklassen (liest aus Properties):
      *   - source.path, backup.path, log.path
-     *   - pkcs11.library, pkcs11.slot, pkcs11.pin
+     *   - pkcs11.library, pkcs11.slot, pkcs11.slot.scan.max, pkcs11.pin
      *   - sig.MEU.*, sig.MEN.*, sig.SOV.*
      */
     private static class Config {
@@ -635,7 +669,8 @@ public class PdfSignerApp {
         final String backupDir;
         final String logPath;
         final String pkcs11LibraryPath;
-        final int pkcs11Slot;   // Slot-Index
+        final Integer pkcs11Slot;   // Slot-Index (null = auto)
+        final int pkcs11SlotScanMax;
         final char[] pkcs11Pin;
         final Map<String, SigConfig> sigConfigs;
 
@@ -644,7 +679,8 @@ public class PdfSignerApp {
             this.backupDir = requireDir(config, "backup.path");
             this.logPath = requireString(config, "log.path");
             this.pkcs11LibraryPath = requireString(config, "pkcs11.library");
-            this.pkcs11Slot = requireInt(config, "pkcs11.slot");
+            this.pkcs11Slot = parseSlot(config, "pkcs11.slot");
+            this.pkcs11SlotScanMax = requireIntOrDefault(config, "pkcs11.slot.scan.max", 10);
             this.pkcs11Pin = requireString(config, "pkcs11.pin").toCharArray();
 
             sigConfigs = new HashMap<>();
@@ -687,6 +723,30 @@ public class PdfSignerApp {
                 return Integer.parseInt(val);
             } catch (NumberFormatException e) {
                 throw new IOException("Ungueltiger Integer-Wert fuer " + key + ": " + val, e);
+            }
+        }
+
+        private static int requireIntOrDefault(Properties cfg, String key, int defaultValue) throws IOException {
+            String val = cfg.getProperty(key);
+            if (val == null || val.isEmpty()) {
+                return defaultValue;
+            }
+            try {
+                return Integer.parseInt(val);
+            } catch (NumberFormatException e) {
+                throw new IOException("Ungueltiger Integer-Wert fuer " + key + ": " + val, e);
+            }
+        }
+
+        private static Integer parseSlot(Properties cfg, String key) throws IOException {
+            String val = requireString(cfg, key).trim();
+            if ("auto".equalsIgnoreCase(val)) {
+                return null;
+            }
+            try {
+                return Integer.parseInt(val);
+            } catch (NumberFormatException e) {
+                throw new IOException("Ungueltiger Slot-Wert fuer " + key + ": " + val + " (erwartet: Integer oder 'auto')", e);
             }
         }
     }
