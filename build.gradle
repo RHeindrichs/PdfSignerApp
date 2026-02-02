@@ -1,0 +1,76 @@
+// To build new distribution: gradle clean jar distZip
+//----------------------------------------------------
+
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+group = 'pdfsigner'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.apache.pdfbox:pdfbox:3.0.2'
+    implementation 'org.bouncycastle:bcprov-jdk15on:1.70'
+    implementation 'org.bouncycastle:bcpkix-jdk15on:1.70'
+    implementation 'org.bouncycastle:bcmail-jdk15on:1.70'
+    implementation 'org.bouncycastle:bcutil-jdk15on:1.70'
+    implementation 'org.apache.logging.log4j:log4j-api:2.24.3'
+    implementation 'org.apache.logging.log4j:log4j-core:2.24.3'
+    implementation 'commons-net:commons-net:3.8.0'
+}
+
+application {
+    mainClass = 'pdfsigner.PdfSignerApp'
+}
+
+// ----- jar-Task konfigurieren (dünnes app.jar) -----
+tasks.jar {
+    from(sourceSets.main.output)             // alle kompilierten Klassen
+    archiveBaseName.set('app')               // Name: app.jar
+    archiveVersion.set('')                   // keine Version im Dateinamen
+    manifest {
+        attributes('Main-Class': application.mainClass)
+    }
+}
+
+// ----- ShadowJar, falls Du das noch brauchst für fat-Jar -----
+shadowJar {
+    archiveBaseName.set('app')
+    archiveClassifier.set('')      
+    archiveVersion.set(version)   
+}
+
+//import org.gradle.api.file.DuplicatesStrategy
+
+// ----- Distribution bauen -----
+distributions {
+    main {
+        distributionBaseName = 'pdfsigner'
+        contents {
+            duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+            // dünnes app.jar in der Root
+            from({ tasks.jar.archiveFile.get().asFile }) {
+                into ''
+                rename { 'app.jar' }
+            }
+
+            // alle runtime-Abhängigkeiten unter lib/
+            from(configurations.runtimeClasspath) {
+                into 'lib'
+            }
+
+            // (optional) eigene Start-Skripts
+            // from("$projectDir/src/dist/bin") {
+            //     into 'bin'
+            //     fileMode = 0755
+            // }
+        }
+    }
+}

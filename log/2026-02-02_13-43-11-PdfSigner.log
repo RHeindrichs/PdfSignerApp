@@ -1,0 +1,38 @@
+2026-02-02 13:43:12 INFO  Logging konfiguriert: Konsole=WARN+, Datei=INFO+
+2026-02-02 13:43:12 INFO  ---- Installierte Provider und ihre KeyStore-Algorithmen ----
+2026-02-02 13:43:12 INFO  ** Provider: SUN
+2026-02-02 13:43:12 INFO     KeyStore-Algorithmus: JKS
+2026-02-02 13:43:12 INFO     KeyStore-Algorithmus: CaseExactJKS
+2026-02-02 13:43:12 INFO     KeyStore-Algorithmus: PKCS12
+2026-02-02 13:43:12 INFO     KeyStore-Algorithmus: DKS
+2026-02-02 13:43:12 INFO  ** Provider: SunRsaSign
+2026-02-02 13:43:12 INFO  ** Provider: SunEC
+2026-02-02 13:43:12 INFO  ** Provider: SunJSSE
+2026-02-02 13:43:12 INFO     KeyStore-Algorithmus: PKCS12
+2026-02-02 13:43:12 INFO  ** Provider: SunJCE
+2026-02-02 13:43:12 INFO     KeyStore-Algorithmus: JCEKS
+2026-02-02 13:43:12 INFO  ** Provider: SunJGSS
+2026-02-02 13:43:13 INFO  ** Provider: SunSASL
+2026-02-02 13:43:13 INFO  ** Provider: XMLDSig
+2026-02-02 13:43:13 INFO  ** Provider: SunPCSC
+2026-02-02 13:43:13 INFO  ** Provider: JdkLDAP
+2026-02-02 13:43:13 INFO  ** Provider: JdkSASL
+2026-02-02 13:43:13 INFO  ** Provider: SunMSCAPI
+2026-02-02 13:43:13 INFO     KeyStore-Algorithmus: Windows-ROOT-LOCALMACHINE
+2026-02-02 13:43:13 INFO     KeyStore-Algorithmus: Windows-ROOT-CURRENTUSER
+2026-02-02 13:43:13 INFO     KeyStore-Algorithmus: Windows-MY
+2026-02-02 13:43:13 INFO     KeyStore-Algorithmus: Windows-MY-CURRENTUSER
+2026-02-02 13:43:13 INFO     KeyStore-Algorithmus: Windows-MY-LOCALMACHINE
+2026-02-02 13:43:13 INFO     KeyStore-Algorithmus: Windows-ROOT
+2026-02-02 13:43:13 INFO  ** Provider: SunPKCS11
+2026-02-02 13:43:13 INFO  ** Provider: SunPKCS11-USBToken
+2026-02-02 13:43:13 INFO  ---------------------------------------------------------------
+2026-02-02 13:43:13 ERROR Fehler bei der PKCS#11-Initialisierung
+java.security.KeyStoreException: PKCS11 not found
+	at java.base/java.security.KeyStore.getInstance(Unknown Source) ~[?:?]
+	at pdfsigner.PdfSignerApp.initPKCS11(PdfSignerApp.java:353) ~[main/:?]
+	at pdfsigner.PdfSignerApp.main(PdfSignerApp.java:115) [main/:?]
+Caused by: java.security.NoSuchAlgorithmException: PKCS11 KeyStore not available
+	at java.base/sun.security.jca.GetInstance.getInstance(Unknown Source) ~[?:?]
+	at java.base/java.security.Security.getImpl(Unknown Source) ~[?:?]
+	... 3 more

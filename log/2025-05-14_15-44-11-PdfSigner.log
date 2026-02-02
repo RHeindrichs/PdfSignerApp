@@ -1,0 +1,16 @@
+2025-05-14 15:44:12 INFO  Verarbeitung gestartet: D:\Daten\_Temp\FACT\Fa_Rg_Menova_GOEBEL_2660_238128_BE 0452612094_GOEBELS U FILS  SPRL_B 4890 THIMISTER_20250513104841837715[signed].pdf
+2025-05-14 15:44:13 ERROR Fehler beim Verarbeiten: 
+java.nio.file.NoSuchFileException: D:\Daten\_Temp\FACT\Fa_Rg_Menova_GOEBEL_2660_238128_BE 0452612094_GOEBELS U FILS  SPRL_B 4890 THIMISTER_20250513104841837715[signed].pdf
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newFileChannel(WindowsFileSystemProvider.java:121) ~[?:?]
+	at java.base/java.nio.channels.FileChannel.open(FileChannel.java:298) ~[?:?]
+	at java.base/java.nio.channels.FileChannel.open(FileChannel.java:357) ~[?:?]
+	at org.apache.pdfbox.io.RandomAccessReadBufferedFile.<init>(RandomAccessReadBufferedFile.java:110) ~[pdfbox-io-3.0.2.jar:3.0.2]
+	at org.apache.pdfbox.io.RandomAccessReadBufferedFile.<init>(RandomAccessReadBufferedFile.java:98) ~[pdfbox-io-3.0.2.jar:3.0.2]
+	at org.apache.pdfbox.Loader.loadPDF(Loader.java:347) ~[pdfbox-3.0.2.jar:3.0.2]
+	at org.apache.pdfbox.Loader.loadPDF(Loader.java:303) ~[pdfbox-3.0.2.jar:3.0.2]
+	at org.apache.pdfbox.Loader.loadPDF(Loader.java:246) ~[pdfbox-3.0.2.jar:3.0.2]
+	at pdfsigner.PdfSignerApp.encryptAndSignPdf(PdfSignerApp.java:144) ~[main/:?]
+	at pdfsigner.PdfSignerApp.main(PdfSignerApp.java:64) [main/:?]

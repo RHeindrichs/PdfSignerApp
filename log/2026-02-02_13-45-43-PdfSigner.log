@@ -1,0 +1,30 @@
+2026-02-02 13:45:44 INFO  Logging konfiguriert: Konsole=WARN+, Datei=INFO+
+2026-02-02 13:45:44 INFO  ---- Installierte Provider und ihre KeyStore-Algorithmen ----
+2026-02-02 13:45:44 INFO  ** Provider: SUN
+2026-02-02 13:45:44 INFO     KeyStore-Algorithmus: JKS
+2026-02-02 13:45:44 INFO     KeyStore-Algorithmus: CaseExactJKS
+2026-02-02 13:45:45 INFO     KeyStore-Algorithmus: PKCS12
+2026-02-02 13:45:45 INFO     KeyStore-Algorithmus: DKS
+2026-02-02 13:45:45 INFO  ** Provider: SunRsaSign
+2026-02-02 13:45:45 INFO  ** Provider: SunEC
+2026-02-02 13:45:45 INFO  ** Provider: SunJSSE
+2026-02-02 13:45:45 INFO     KeyStore-Algorithmus: PKCS12
+2026-02-02 13:45:45 INFO  ** Provider: SunJCE
+2026-02-02 13:45:45 INFO     KeyStore-Algorithmus: JCEKS
+2026-02-02 13:45:45 INFO  ** Provider: SunJGSS
+2026-02-02 13:45:45 INFO  ** Provider: SunSASL
+2026-02-02 13:45:45 INFO  ** Provider: XMLDSig
+2026-02-02 13:45:45 INFO  ** Provider: SunPCSC
+2026-02-02 13:45:45 INFO  ** Provider: JdkLDAP
+2026-02-02 13:45:45 INFO  ** Provider: JdkSASL
+2026-02-02 13:45:45 INFO  ** Provider: SunMSCAPI
+2026-02-02 13:45:45 INFO     KeyStore-Algorithmus: Windows-ROOT-LOCALMACHINE
+2026-02-02 13:45:45 INFO     KeyStore-Algorithmus: Windows-ROOT-CURRENTUSER
+2026-02-02 13:45:45 INFO     KeyStore-Algorithmus: Windows-MY
+2026-02-02 13:45:45 INFO     KeyStore-Algorithmus: Windows-MY-CURRENTUSER
+2026-02-02 13:45:45 INFO     KeyStore-Algorithmus: Windows-MY-LOCALMACHINE
+2026-02-02 13:45:45 INFO     KeyStore-Algorithmus: Windows-ROOT
+2026-02-02 13:45:45 INFO  ** Provider: SunPKCS11
+2026-02-02 13:45:45 INFO  ** Provider: SunPKCS11-USBToken
+2026-02-02 13:45:45 INFO     KeyStore-Algorithmus: PKCS11
+2026-02-02 13:45:45 INFO  ---------------------------------------------------------------

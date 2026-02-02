@@ -1,0 +1,3 @@
+2025-05-14 15:28:55 INFO  Verarbeitung gestartet: D:\Daten\_Temp\FACT\Fa_Rg_Menova_GOEBEL_2660_238128_BE 0452612094_GOEBELS U FILS  SPRL_B 4890 THIMISTER_20250513104841837715.pdf
+2025-05-14 15:28:56 WARN  You are overwriting the existing file Fa_Rg_Menova_GOEBEL_2660_238128_BE 0452612094_GOEBELS U FILS  SPRL_B 4890 THIMISTER_20250513104841837715[encrypted].pdf, this will produce a corrupted file if you're also reading from it
+2025-05-14 15:29:02 INFO  Erfolgreich verschlüsselt und signiert: D:\Daten\_Temp\FACT\Fa_Rg_Menova_GOEBEL_2660_238128_BE 0452612094_GOEBELS U FILS  SPRL_B 4890 THIMISTER_20250513104841837715.pdf

@@ -1,0 +1,10 @@
+2026-02-02 13:40:39 INFO  Logging konfiguriert: Konsole=WARN+, Datei=INFO+
+2026-02-02 13:40:40 ERROR Fehler bei der PKCS#11-Initialisierung
+java.security.ProviderException: Library C:/WINDOWS/System32/eTPKCS11.dll does not exist
+	at jdk.crypto.cryptoki@21.0.3/sun.security.pkcs11.SunPKCS11.<init>(Unknown Source) ~[jdk.crypto.cryptoki:?]
+	at jdk.crypto.cryptoki@21.0.3/sun.security.pkcs11.SunPKCS11$1.run(Unknown Source) ~[jdk.crypto.cryptoki:?]
+	at jdk.crypto.cryptoki@21.0.3/sun.security.pkcs11.SunPKCS11$1.run(Unknown Source) ~[jdk.crypto.cryptoki:?]
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source) ~[?:?]
+	at jdk.crypto.cryptoki@21.0.3/sun.security.pkcs11.SunPKCS11.configure(Unknown Source) ~[jdk.crypto.cryptoki:?]
+	at pdfsigner.PdfSignerApp.initPKCS11(PdfSignerApp.java:330) ~[main/:?]
+	at pdfsigner.PdfSignerApp.main(PdfSignerApp.java:115) [main/:?]

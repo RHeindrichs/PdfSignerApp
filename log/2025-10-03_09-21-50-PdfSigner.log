@@ -1,0 +1,35 @@
+2025-10-03 09:21:50 INFO  Logging konfiguriert: Konsole=WARN+, Datei=INFO+
+2025-10-03 09:21:50 INFO  ---- Installierte Provider und ihre KeyStore-Algorithmen ----
+2025-10-03 09:21:50 INFO  ** Provider: SUN
+2025-10-03 09:21:50 INFO     KeyStore-Algorithmus: JKS
+2025-10-03 09:21:50 INFO     KeyStore-Algorithmus: CaseExactJKS
+2025-10-03 09:21:50 INFO     KeyStore-Algorithmus: PKCS12
+2025-10-03 09:21:50 INFO     KeyStore-Algorithmus: DKS
+2025-10-03 09:21:50 INFO  ** Provider: SunRsaSign
+2025-10-03 09:21:50 INFO  ** Provider: SunEC
+2025-10-03 09:21:50 INFO  ** Provider: SunJSSE
+2025-10-03 09:21:50 INFO     KeyStore-Algorithmus: PKCS12
+2025-10-03 09:21:50 INFO  ** Provider: SunJCE
+2025-10-03 09:21:50 INFO     KeyStore-Algorithmus: JCEKS
+2025-10-03 09:21:50 INFO  ** Provider: SunJGSS
+2025-10-03 09:21:50 INFO  ** Provider: SunSASL
+2025-10-03 09:21:50 INFO  ** Provider: XMLDSig
+2025-10-03 09:21:50 INFO  ** Provider: SunPCSC
+2025-10-03 09:21:50 INFO  ** Provider: JdkLDAP
+2025-10-03 09:21:50 INFO  ** Provider: JdkSASL
+2025-10-03 09:21:50 INFO  ** Provider: SunMSCAPI
+2025-10-03 09:21:50 INFO     KeyStore-Algorithmus: Windows-ROOT-LOCALMACHINE
+2025-10-03 09:21:50 INFO     KeyStore-Algorithmus: Windows-ROOT-CURRENTUSER
+2025-10-03 09:21:50 INFO     KeyStore-Algorithmus: Windows-MY
+2025-10-03 09:21:50 INFO     KeyStore-Algorithmus: Windows-MY-CURRENTUSER
+2025-10-03 09:21:50 INFO     KeyStore-Algorithmus: Windows-MY-LOCALMACHINE
+2025-10-03 09:21:50 INFO     KeyStore-Algorithmus: Windows-ROOT
+2025-10-03 09:21:50 INFO  ** Provider: SunPKCS11
+2025-10-03 09:21:50 INFO  ** Provider: SunPKCS11-USBToken
+2025-10-03 09:21:50 INFO     KeyStore-Algorithmus: PKCS11
+2025-10-03 09:21:50 INFO  ---------------------------------------------------------------
+2025-10-03 09:21:50 ERROR Fehler beim Verarbeiten: 
+java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1651) ~[?:?]
+	at pdfsigner.PdfSignerApp.readFilterDate(PdfSignerApp.java:143) ~[main/:?]
+	at pdfsigner.PdfSignerApp.main(PdfSignerApp.java:124) [main/:?]

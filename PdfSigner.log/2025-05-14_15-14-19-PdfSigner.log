@@ -1,0 +1,15 @@
+2025-05-14 15:14:21 ERROR Fehler beim Verarbeiten: 
+java.nio.file.NoSuchFileException: D:\Daten\_Temp\FACT\DeinDokument.pdf
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newFileChannel(WindowsFileSystemProvider.java:121) ~[?:?]
+	at java.base/java.nio.channels.FileChannel.open(FileChannel.java:298) ~[?:?]
+	at java.base/java.nio.channels.FileChannel.open(FileChannel.java:357) ~[?:?]
+	at org.apache.pdfbox.io.RandomAccessReadBufferedFile.<init>(RandomAccessReadBufferedFile.java:110) ~[pdfbox-io-3.0.2.jar:3.0.2]
+	at org.apache.pdfbox.io.RandomAccessReadBufferedFile.<init>(RandomAccessReadBufferedFile.java:98) ~[pdfbox-io-3.0.2.jar:3.0.2]
+	at org.apache.pdfbox.Loader.loadPDF(Loader.java:347) ~[pdfbox-3.0.2.jar:3.0.2]
+	at org.apache.pdfbox.Loader.loadPDF(Loader.java:303) ~[pdfbox-3.0.2.jar:3.0.2]
+	at org.apache.pdfbox.Loader.loadPDF(Loader.java:246) ~[pdfbox-3.0.2.jar:3.0.2]
+	at pdfsigner.PdfSignerApp.encryptAndSignPdf(PdfSignerApp.java:154) ~[main/:?]
+	at pdfsigner.PdfSignerApp.main(PdfSignerApp.java:65) [main/:?]
