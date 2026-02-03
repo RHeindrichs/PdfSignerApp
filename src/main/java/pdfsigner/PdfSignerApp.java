@@ -86,7 +86,6 @@ public class PdfSignerApp {
     private static final String NTP_SERVER = "DC-00-MEU.meurer.local";
 
     // PKCS#11-Provider und KeyStore
-    @SuppressWarnings("unused")
     private static Provider pkcs11Provider;
     private static KeyStore pkcs11KeyStore;
 
@@ -717,14 +716,14 @@ public class PdfSignerApp {
         }
 
         // Helfer-Methode, um eine Integer-Eigenschaft zu holen
-        private static int requireInt(Properties cfg, String key) throws IOException {
-            String val = requireString(cfg, key);
-            try {
-                return Integer.parseInt(val);
-            } catch (NumberFormatException e) {
-                throw new IOException("Ungueltiger Integer-Wert fuer " + key + ": " + val, e);
-            }
-        }
+        //private static int requireInt(Properties cfg, String key) throws IOException {
+        //    String val = requireString(cfg, key);
+        //    try {
+        //        return Integer.parseInt(val);
+        //    } catch (NumberFormatException e) {
+        //        throw new IOException("Ungueltiger Integer-Wert fuer " + key + ": " + val, e);
+        //    }
+        //}
 
         private static int requireIntOrDefault(Properties cfg, String key, int defaultValue) throws IOException {
             String val = cfg.getProperty(key);

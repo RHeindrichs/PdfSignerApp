@@ -1,0 +1,64 @@
+2026-02-02 16:02:39 INFO  Logging konfiguriert: Konsole=WARN+, Datei=INFO+
+2026-02-02 16:02:39 INFO  ---- Installierte Provider und ihre KeyStore-Algorithmen ----
+2026-02-02 16:02:39 INFO  ** Provider: SUN
+2026-02-02 16:02:39 INFO     KeyStore-Algorithmus: JKS
+2026-02-02 16:02:39 INFO     KeyStore-Algorithmus: CaseExactJKS
+2026-02-02 16:02:39 INFO     KeyStore-Algorithmus: PKCS12
+2026-02-02 16:02:39 INFO     KeyStore-Algorithmus: DKS
+2026-02-02 16:02:39 INFO  ** Provider: SunRsaSign
+2026-02-02 16:02:39 INFO  ** Provider: SunEC
+2026-02-02 16:02:39 INFO  ** Provider: SunJSSE
+2026-02-02 16:02:39 INFO     KeyStore-Algorithmus: PKCS12
+2026-02-02 16:02:39 INFO  ** Provider: SunJCE
+2026-02-02 16:02:39 INFO     KeyStore-Algorithmus: JCEKS
+2026-02-02 16:02:39 INFO  ** Provider: SunJGSS
+2026-02-02 16:02:39 INFO  ** Provider: SunSASL
+2026-02-02 16:02:40 INFO  ** Provider: XMLDSig
+2026-02-02 16:02:40 INFO  ** Provider: SunPCSC
+2026-02-02 16:02:40 INFO  ** Provider: JdkLDAP
+2026-02-02 16:02:40 INFO  ** Provider: JdkSASL
+2026-02-02 16:02:40 INFO  ** Provider: SunMSCAPI
+2026-02-02 16:02:40 INFO     KeyStore-Algorithmus: Windows-ROOT-LOCALMACHINE
+2026-02-02 16:02:40 INFO     KeyStore-Algorithmus: Windows-ROOT-CURRENTUSER
+2026-02-02 16:02:40 INFO     KeyStore-Algorithmus: Windows-MY
+2026-02-02 16:02:40 INFO     KeyStore-Algorithmus: Windows-MY-CURRENTUSER
+2026-02-02 16:02:40 INFO     KeyStore-Algorithmus: Windows-MY-LOCALMACHINE
+2026-02-02 16:02:40 INFO     KeyStore-Algorithmus: Windows-ROOT
+2026-02-02 16:02:40 INFO  ** Provider: SunPKCS11
+2026-02-02 16:02:40 INFO  ** Provider: SunPKCS11-USBToken
+2026-02-02 16:02:40 INFO  ---------------------------------------------------------------
+2026-02-02 16:02:40 INFO  ---- Installierte Provider und ihre KeyStore-Algorithmen ----
+2026-02-02 16:02:40 INFO  ** Provider: SUN
+2026-02-02 16:02:40 INFO     KeyStore-Algorithmus: JKS
+2026-02-02 16:02:40 INFO     KeyStore-Algorithmus: CaseExactJKS
+2026-02-02 16:02:40 INFO     KeyStore-Algorithmus: PKCS12
+2026-02-02 16:02:40 INFO     KeyStore-Algorithmus: DKS
+2026-02-02 16:02:40 INFO  ** Provider: SunRsaSign
+2026-02-02 16:02:40 INFO  ** Provider: SunEC
+2026-02-02 16:02:40 INFO  ** Provider: SunJSSE
+2026-02-02 16:02:40 INFO     KeyStore-Algorithmus: PKCS12
+2026-02-02 16:02:40 INFO  ** Provider: SunJCE
+2026-02-02 16:02:40 INFO     KeyStore-Algorithmus: JCEKS
+2026-02-02 16:02:40 INFO  ** Provider: SunJGSS
+2026-02-02 16:02:40 INFO  ** Provider: SunSASL
+2026-02-02 16:02:40 INFO  ** Provider: XMLDSig
+2026-02-02 16:02:40 INFO  ** Provider: SunPCSC
+2026-02-02 16:02:40 INFO  ** Provider: JdkLDAP
+2026-02-02 16:02:40 INFO  ** Provider: JdkSASL
+2026-02-02 16:02:40 INFO  ** Provider: SunMSCAPI
+2026-02-02 16:02:40 INFO     KeyStore-Algorithmus: Windows-ROOT-LOCALMACHINE
+2026-02-02 16:02:40 INFO     KeyStore-Algorithmus: Windows-ROOT-CURRENTUSER
+2026-02-02 16:02:40 INFO     KeyStore-Algorithmus: Windows-MY
+2026-02-02 16:02:40 INFO     KeyStore-Algorithmus: Windows-MY-CURRENTUSER
+2026-02-02 16:02:40 INFO     KeyStore-Algorithmus: Windows-MY-LOCALMACHINE
+2026-02-02 16:02:40 INFO     KeyStore-Algorithmus: Windows-ROOT
+2026-02-02 16:02:40 INFO  ** Provider: SunPKCS11
+2026-02-02 16:02:40 INFO  ** Provider: SunPKCS11-USBToken
+2026-02-02 16:02:40 INFO     KeyStore-Algorithmus: PKCS11
+2026-02-02 16:02:40 INFO  ---------------------------------------------------------------
+2026-02-02 16:02:40 INFO  PKCS#11 Slot automatisch gefunden: slotListIndex=1
+2026-02-02 16:02:50 ERROR Fehler beim Verarbeiten: 
+java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Unknown Source) ~[?:?]
+	at pdfsigner.PdfSignerApp.readFilterDate(PdfSignerApp.java:143) ~[main/:?]
+	at pdfsigner.PdfSignerApp.main(PdfSignerApp.java:124) [main/:?]
